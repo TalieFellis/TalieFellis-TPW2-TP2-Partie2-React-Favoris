@@ -1,30 +1,37 @@
-// Home.jsx
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CategoryCard from './CategoryCard';
+import { useQuery } from 'react-query';
 
 function Home() {
-  const [categories, setCategories] = useState([]);
+  // Créez une requête pour obtenir la liste des catégories
+  const { data: categories, isLoading, isError, error } = useQuery('categories', () =>
+    fetch('https://www.themealdb.com/api/json/v1/1/categories.php').then((response) =>
+      response.json()
+    )
+  );
 
-  useEffect(() => {
-    // Utilise l'API pour récupérer la liste des catégories et met à jour l'état
-    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-      .then((response) => response.json())
-      .then((categoryList) => {
-        // categoryList contient la liste des catégories
-        setCategories(categoryList.categories);
-      })
-      .catch((error) => {
-        console.error('Erreur lors de la récupération des catégories :', error);
-      });
-  }, []);
+  // console.log('Données de catégories :', categories);
+
+  // Gérez l'état de chargement et les erreurs
+  if (isLoading) {
+    return <div>Chargement en cours...</div>;
+  }
+
+  if (isError) {
+    return <div>Erreur : {error.message}</div>;
+  }
+
+  // Vérifiez la structure exacte du tableau categories
+  if (!Array.isArray(categories?.categories)) {
+    // console.log('Structure des données de catégories non valide :', categories);
+    return <div>Données de catégories non valides</div>;
+  }
 
   return (
     <div className="home">
-
       <h2>Liste des catégories de recettes</h2>
       <div className="category-list">
-        {categories.map((category) => (
+        {categories.categories.map((category) => (
           <CategoryCard key={category.idCategory} category={category} />
         ))}
       </div>

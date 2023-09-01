@@ -6,7 +6,7 @@ import RecipePage from './components/RecipePage';
 
 function App() {
   return (
-    <Routes> {/* Utilise Routes au lieu de Switch */}
+    <Routes>
       <Route path="/" element={<Home />} /> {/* Utilise element au lieu de component */}
       <Route path="/categories/:categoryName" element={<CategoryPage />} /> {/* Utilise element au lieu de component */}
       <Route path="/recipes/:recipeId" element={<RecipePage />} /> {/* Utilise element au lieu de component */}
