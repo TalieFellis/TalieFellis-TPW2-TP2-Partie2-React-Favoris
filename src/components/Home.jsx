@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoryCard from './CategoryCard';
 import { useQuery } from 'react-query';
+import './styles.css'; 
 
 function Home() {
   // Créez une requête pour obtenir la liste des catégories
@@ -29,6 +30,7 @@ function Home() {
 
   return (
     <div className="home">
+      <h1>TP2 - Livre de recttes en React</h1>
       <h2>Liste des catégories de recettes</h2>
       <div className="category-list">
         {categories.categories.map((category) => (

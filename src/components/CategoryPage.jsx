@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 import { useQuery } from 'react-query';
+import './styles.css'; 
 
 function CategoryPage() {
   const { categoryName } = useParams();
@@ -36,7 +37,7 @@ function CategoryPage() {
     <div className="category-page">
       <h2>Recettes de la catégorie : {categoryName}</h2>
       {/* Ajout d'un lien pour retourner à la page d'accueil */}
-      <Link to="/">Retour à la page d'accueil</Link>
+      <Link to="/" className="button-link">Retour à la page d'accueil</Link>
 
       <div className="recipe-list">
         {recipes.map((recipe) => (

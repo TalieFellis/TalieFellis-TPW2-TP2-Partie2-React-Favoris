@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importe Link depuis react-router-dom
+import './styles.css'; 
 
 function RecipeCard({ recipe }) {
   const {
@@ -30,7 +31,7 @@ function RecipeCard({ recipe }) {
       {/* <p>Catégorie : {strCategory}</p> */}
       {strMealThumb && <img src={strMealThumb} alt={strMeal} />}
       {/* Ajoute un lien pour voir la recette complète */}
-      <Link to={`/recipes/${idMeal}`}>Voir la recette complète</Link>
+      <Link to={`/recipes/${idMeal}`} className="button-link">Voir la recette complète</Link>
     </div>
   );
 }
