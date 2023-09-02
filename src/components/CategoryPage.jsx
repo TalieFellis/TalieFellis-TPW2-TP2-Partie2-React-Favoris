@@ -1,25 +1,23 @@
 // Page des catégories 
 // Lorsqu'un utilisateur clique sur une catégorie, il est dirigé vers cette page où sont affichées les recettes de cette catégorie.
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import RecipeCard from './RecipeCard';
 import { useQuery } from 'react-query';
-import './styles.css'; 
+import RecipeCard from './RecipeCard';
+import { useRecipeDetails } from '../services/recipeService';
+import { getRecipesByCategory } from '../services/recipeService'; 
+import './styles.css';
 
 function CategoryPage() {
   const { categoryName } = useParams();
 
-  // Requête pour obtenir les recettes de la catégorie spécifiée
+  // Utilisez la fonction useQuery pour obtenir les recettes de la catégorie
   const { data: recipes, isLoading, isError, error } = useQuery(
     ['recipes', categoryName], // Utilisez une clé unique pour identifier cette requête
-    () =>
-      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`)
-        .then((response) => response.json())
-        .then((data) => data.meals) // Accédez aux données de recettes ici
+    () => getRecipesByCategory(categoryName)
   );
 
-  // Gérez l'état de chargement et les erreurs
   if (isLoading) {
     return <div>Chargement en cours...</div>;
   }
@@ -28,7 +26,6 @@ function CategoryPage() {
     return <div>Erreur : {error.message}</div>;
   }
 
-  // Vérifiez s'il y a des recettes à afficher
   if (!Array.isArray(recipes)) {
     return <div>Aucune recette trouvée pour cette catégorie.</div>;
   }

@@ -60,12 +60,13 @@ function RecipePage() {
 
         <h2>{recipe.strMeal}</h2>
         <p>Catégorie : {recipe.strCategory}</p>
+
         {recipe.strMealThumb && <img src={recipe.strMealThumb} alt={recipe.strMeal} />}
 
         <button onClick={toggleDrawer}>
             {isDrawerOpen ? 'Fermer les détails' : 'Voir les détails'}
         </button>
-
+      
         {isDrawerOpen && (
             <div className="recipe-details-container">
                 <div className="recipe-details">
