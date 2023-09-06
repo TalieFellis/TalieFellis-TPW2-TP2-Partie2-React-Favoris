@@ -1,8 +1,12 @@
 /* Styles pour la page de chaque recette */
+.recipe-page p {
+    margin-bottom: 1em;
+}
+
 .recipe-details-container {
     display: flex;
-    /* flex-wrap: wrap; */
     gap: 16px;
+    margin-bottom: 2em;
 }
 
 .recipe-details {

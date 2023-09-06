@@ -1,7 +1,6 @@
 import React from 'react';
 import CategoryCard from './categoryCard/CategoryCard';
 import { useCategories } from '../services/recipeService'; // Importez la fonction useCategories
-import './styles.css';
 
 function Home() {
   const { data: categories, isLoading, isError, error } = useCategories(); // Utilisez la fonction useCategories

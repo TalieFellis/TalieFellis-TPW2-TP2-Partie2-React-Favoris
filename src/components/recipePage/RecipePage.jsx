@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import RecipeCard from '../recipeCard/RecipeCard';
 import { useQuery } from 'react-query';
+import { getRecipeDetailsById } from '../../services/recipeService';
 import './RecipePage.css'; 
 
 function RecipePage() {
@@ -12,17 +13,16 @@ function RecipePage() {
   const [recipe, setRecipe] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // Utilisez useQuery pour obtenir les détails de la recette
+  // Utiliser useQuery pour obtenir les détails de la recette
   const { data: recipeDetails, isLoading, isError, error } = useQuery(
-    ['recipe', recipeId], // Utilisez une clé unique pour identifier cette requête
-    () => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`)
-      .then((response) => response.json())
+    ['recipe', recipeId],
+    () => getRecipeDetailsById(recipeId) // Fonction getRecipeDetailsById
   );
 
   useEffect(() => {
-    // Mettez à jour l'état de la recette lorsque les données de la requête sont disponibles
-    if (recipeDetails?.meals && recipeDetails.meals.length > 0) {
-      setRecipe(recipeDetails.meals[0]);
+    // Mettre à jour l'état de la recette lorsque les données de la requête sont disponibles
+    if (recipeDetails) {
+      setRecipe(recipeDetails);
     }
   }, [recipeDetails]);
 
