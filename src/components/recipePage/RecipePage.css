@@ -1,0 +1,40 @@
+/* Styles pour la page de chaque recette */
+.recipe-details-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 16px;
+}
+
+.recipe-details {
+    flex-basis: calc(50% - 8px);
+}
+
+.recipe-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.recipe-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recipe-details ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.recipe-instructions {
+    flex-basis: calc(50% - 8px);
+}
+
+.recipe-instructions h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.recipe-instructions p {
+    font-size: 1rem;
+    color: #555;
+}

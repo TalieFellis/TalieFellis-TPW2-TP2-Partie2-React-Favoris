@@ -1,0 +1,56 @@
+/* Style pour la carte des recettes */
+.recipe-card {
+    background-color: #fff;
+    border-radius: 22px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    max-width: 300px;
+}
+
+.recipe-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.recipe-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.recipe-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+    margin-top: 12px;
+}
+
+.recipe-card a {
+    color: #f6fbfe;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.recipe-card a:hover {
+    color: #004b87;
+}
+
+.recipe-card button {
+    background-color: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.recipe-card button:hover {
+    background-color: #004b87;
+}

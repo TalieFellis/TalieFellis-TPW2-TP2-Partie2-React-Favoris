@@ -4,10 +4,10 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import RecipeCard from './RecipeCard';
-import { useRecipeDetails } from '../services/recipeService';
-import { getRecipesByCategory } from '../services/recipeService'; 
-import './styles.css';
+import RecipeCard from '../recipeCard/RecipeCard';
+import { useRecipeDetails } from '../../services/recipeService';
+import { getRecipesByCategory } from '../../services/recipeService'; 
+import './CategoryPage.css';
 
 function CategoryPage() {
   const { categoryName } = useParams();

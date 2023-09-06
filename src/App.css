@@ -10,19 +10,3 @@
   gap: 1rem;
   justify-items: center;
 }
-
-.category-card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.category-card:hover {
-  transform: scale(1.05);
-}
-
-.category-card img {
-  max-width: 100%;
-}

@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryCard from './CategoryCard';
+import CategoryCard from './categoryCard/CategoryCard';
 import { useCategories } from '../services/recipeService'; // Importez la fonction useCategories
 import './styles.css';
 

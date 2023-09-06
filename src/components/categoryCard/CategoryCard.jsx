@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importe Link depuis react-router-dom
-import './styles.css'; 
+import './CategoryCard.css'; 
 
 function CategoryCard({ category }) {
   return (

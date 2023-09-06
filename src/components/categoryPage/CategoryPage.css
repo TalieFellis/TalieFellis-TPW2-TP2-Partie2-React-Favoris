@@ -1,0 +1,6 @@
+/* Style pour le conteneur des cartes de recettes */
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

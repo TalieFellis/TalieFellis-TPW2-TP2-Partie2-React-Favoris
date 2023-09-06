@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import CategoryPage from './components/CategoryPage';
-import RecipePage from './components/RecipePage';
+import CategoryPage from './components/categoryPage/CategoryPage';
+import RecipePage from './components/recipePage/RecipePage';
 
 function App() {
   return (
