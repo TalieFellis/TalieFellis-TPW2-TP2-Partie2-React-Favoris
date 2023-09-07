@@ -1,9 +1,9 @@
 import React from 'react';
 import CategoryCard from './categoryCard/CategoryCard';
-import { useCategories } from '../services/recipeService'; // Importez la fonction useCategories
+import { useCategories } from '../services/categoryService';
 
 function Home() {
-  const { data: categories, isLoading, isError, error } = useCategories(); // Utilisez la fonction useCategories
+  const { data: categories, isLoading, isError, error } = useCategories();
 
   if (isLoading) {
     return <div>Chargement en cours...</div>;

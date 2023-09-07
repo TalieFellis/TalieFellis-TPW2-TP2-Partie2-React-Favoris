@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import RecipeCard from '../recipeCard/RecipeCard';
 import { useQuery } from 'react-query';
-import { getRecipeDetailsById } from '../../services/recipeService';
+import { getRecipeDetailsById } from '../../services/recipeDetailsService';
 import './RecipePage.css'; 
 
 function RecipePage() {
