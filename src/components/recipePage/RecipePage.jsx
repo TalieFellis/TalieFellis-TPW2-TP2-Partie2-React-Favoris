@@ -108,7 +108,7 @@ function RecipePage() {
       )}
             {/* Bouton pour ajouter ou retirer des favoris */}
             <button onClick={toggleFavorite}>
-        {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+        {isFavorite ? 'Enlever des favoris' : 'Ajouter aux favoris'}
       </button>
     </div>
   );

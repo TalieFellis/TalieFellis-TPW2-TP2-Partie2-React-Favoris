@@ -40,11 +40,11 @@
 }
 
 .recipe-card button {
-    background-color: #7b87d5;
+    background-color: #5668C9;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
+    border-radius: 8px;
+    padding: 13px 16px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
