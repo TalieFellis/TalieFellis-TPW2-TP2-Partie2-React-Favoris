@@ -4,6 +4,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Importe Link depuis react-router-dom
 import './CategoryCard.css'; 
 
+import { useDispatch, useSelector } from 'react-redux';
+
 function CategoryCard({ category }) {
   return (
     <div className="category-card">

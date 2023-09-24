@@ -8,6 +8,8 @@ import RecipeCard from '../recipeCard/RecipeCard';
 import { getRecipesByCategory } from '../../services/recipeListService'; 
 import './CategoryPage.css';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 function CategoryPage() {
   const { categoryName } = useParams();
 

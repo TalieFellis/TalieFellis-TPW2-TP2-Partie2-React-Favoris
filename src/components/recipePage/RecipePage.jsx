@@ -1,17 +1,31 @@
-// Page de recette individuelle
-// Lorsqu'un utilisateur clique sur une recette, il est dirigé vers cette page pour afficher les détails de la recette.
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import RecipeCard from '../recipeCard/RecipeCard';
 import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import './RecipePage.css';
 import { getRecipeDetailsById } from '../../services/recipeDetailsService';
-import './RecipePage.css'; 
+import { addToFavorites, removeFromFavorites } from '../../../favoritesSlice';
 
 function RecipePage() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites);
+
+  // Vérifier si l'ID de la recette est dans les favoris
+  const isFavorite = favorites.some((favId) => favId === recipeId); 
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      // Supprimer l'ID de la recette des favoris
+      dispatch(removeFromFavorites(recipeId));
+    } else {
+      // Ajouter l'ID de la recette aux favoris
+      dispatch(addToFavorites(recipeId));
+    }
+  };
 
   // Utiliser useQuery pour obtenir les détails de la recette
   const { data: recipeDetails, isLoading, isError, error } = useQuery(
@@ -55,35 +69,47 @@ function RecipePage() {
 
   return (
     <div className="recipe-page">
-        <Link to="/" className="button-link">Retour à la page d'accueil</Link>
-        <Link to={`/categories/${recipe.strCategory}`} className="button-link">Retour à la catégorie</Link>
+      <Link to="/" className="button-link">
+        Retour à la page d'accueil
+      </Link>
+      <Link to={`/categories/${recipe.strCategory}`} className="button-link">
+        Retour à la catégorie
+      </Link>
 
-        <h2>{recipe.strMeal}</h2>
-        <p>Catégorie : {recipe.strCategory}</p>
+      <h2>{recipe.strMeal}</h2>
+      <p>Catégorie : {recipe.strCategory}</p>
 
-        {recipe.strMealThumb && <img src={recipe.strMealThumb} alt={recipe.strMeal} />}
+      {recipe.strMealThumb && (
+        <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+      )}
 
-        <button onClick={toggleDrawer}>
-            {isDrawerOpen ? 'Fermer les détails' : 'Voir les détails'}
-        </button>
-      
-        {isDrawerOpen && (
-            <div className="recipe-details-container">
-                <div className="recipe-details">
-                    <h4>Ingrédients :</h4>
-                    <ul>
-                        {ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient} - {measures[index]}</li>
-                        ))}
-                    </ul>
-                </div>
+      <button onClick={toggleDrawer}>
+        {isDrawerOpen ? 'Fermer les détails' : 'Voir les détails'}
+      </button>
 
-                <div className="recipe-instructions">
-                    <h4>Instructions :</h4>
-                    <p>{recipe.strInstructions}</p>
-                </div>
-            </div>
-        )}
+      {isDrawerOpen && (
+        <div className="recipe-details-container">
+          <div className="recipe-details">
+            <h4>Ingrédients :</h4>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <li key={index}>
+                  {ingredient} - {measures[index]}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="recipe-instructions">
+            <h4>Instructions :</h4>
+            <p>{recipe.strInstructions}</p>
+          </div>
+        </div>
+      )}
+            {/* Bouton pour ajouter ou retirer des favoris */}
+            <button onClick={toggleFavorite}>
+        {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+      </button>
     </div>
   );
 }

@@ -5,16 +5,29 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
-import { QueryClient, QueryClientProvider } from 'react-query'; // Importez QueryClient et QueryClientProvider
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient(); // Créez une instance de QueryClient
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import favoritesReducer from '../favoritesSlice';
+
+const queryClient = new QueryClient();
+
+const store = configureStore({
+  reducer: {
+    favorites: favoritesReducer,
+  },
+});
 
 createRoot(document.getElementById('root')).render(
   <Router>
     <React.StrictMode>
-      <QueryClientProvider client={queryClient}> {/* Enveloppez votre application avec QueryClientProvider */}
-        <App />
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <App />
+        </Provider>
       </QueryClientProvider>
     </React.StrictMode>
   </Router>
 );
+

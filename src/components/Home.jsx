@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CategoryCard from './categoryCard/CategoryCard';
 import { useCategories } from '../services/categoryService';
 
@@ -21,6 +22,7 @@ function Home() {
     <div className="home">
       <h1>TP2 - Livre de recettes en React</h1>
       <h2>Liste des catégories de recettes</h2>
+      <Link to="/favorites">Mes recettes favorites</Link>
       <div className="category-list">
         {categories.categories.map((category) => (
           <CategoryCard key={category.idCategory} category={category} />
